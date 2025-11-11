@@ -7,30 +7,89 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  overflow: hidden; /* Prevent body scroll */
+  overflow: hidden;
   font-size: 14px;
 }
 
-.main-interface {
-  display: flex;
-  flex: 1; /* Take up remaining height */
-  overflow: auto;
-}
-
-/* --- Colors and Variables --- */
 :root {
   --primary-blue: #1890ff;
   --dark-text: #333;
-  --light-text: #595959;
+  --light-text: #8c8c8c;
   --border-color: #e8e8e8;
-  --answered-color: #28a745; /* Green */
-  --unanswered-color: #f0f0f0; /* Light Gray */
-  --review-color: #ffc107; /* Yellow/Orange */
-  --answered-box-bg: #e6f7ff;
-  --review-box-bg: #fffbe6;
+  --answered-color: #52c41a; /* Green */
+  --review-color: #faad14; /* Orange/Yellow */
+  --current-q-bg: #e6f7ff;
+  --box-bg: #fff;
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-lifted: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
-/* --- 1. Left Sidebar / Navigation Panel --- */
+/* --- 0. Top Navigation Bar --- */
+.top-bar {
+  height: 50px;
+  background-color: var(--box-bg);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  color: var(--dark-text);
+}
+
+.top-logo {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-blue);
+}
+
+.top-center-title {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--dark-text);
+}
+
+.top-controls {
+  display: flex;
+  gap: 15px;
+}
+
+.timer-box {
+  background-color: #ffe58f;
+  color: #faad14;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.status-box {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+}
+
+.status-box i {
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+.status-box.connected {
+  color: var(--answered-color);
+}
+
+.status-box.secure-mode {
+  color: #fa541c;
+}
+
+/* --- 1. Main Interface Layout --- */
+.main-interface {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* --- 1.1 Left Sidebar --- */
 .sidebar {
   width: 250px;
   background-color: #fff;
@@ -41,29 +100,42 @@ body {
   overflow-y: auto;
 }
 
-.header-info {
+.user-profile {
+  display: flex;
+  align-items: center;
   padding: 0 20px 10px 20px;
 }
 
-.exam-title {
+.avatar-placeholder {
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-blue);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: bold;
-  color: var(--dark-text);
   font-size: 16px;
-}
-
-.user-info {
-  padding: 10px 20px 20px 20px;
+  margin-right: 10px;
 }
 
 .user-name {
   font-size: 15px;
-  font-weight: bold;
-  color: var(--primary-blue);
-  margin-bottom: 3px;
+  font-weight: 600;
+  color: var(--dark-text);
+  margin-bottom: 2px;
 }
 
 .user-details {
   color: var(--light-text);
+  font-size: 12px;
+}
+
+.sidebar-toggle {
+  margin-left: auto;
+  color: var(--light-text);
+  cursor: pointer;
   font-size: 12px;
 }
 
@@ -79,6 +151,7 @@ body {
   color: var(--light-text);
   display: flex;
   align-items: center;
+  font-weight: 500;
 }
 
 .menu-item i {
@@ -87,10 +160,9 @@ body {
 }
 
 .menu-item.active {
-  background-color: var(--answered-box-bg);
+  background-color: var(--current-q-bg);
   color: var(--primary-blue);
-  font-weight: bold;
-  border-right: 3px solid var(--primary-blue);
+  font-weight: 600;
 }
 
 .nav-section {
@@ -98,7 +170,7 @@ body {
 }
 
 .nav-header {
-  font-weight: bold;
+  font-weight: 600;
   color: var(--dark-text);
   margin-bottom: 5px;
 }
@@ -119,48 +191,32 @@ body {
   padding: 8px 0;
   text-align: center;
   border-radius: 4px;
-  font-weight: bold;
+  font-weight: 500;
   cursor: pointer;
   transition: background-color 0.1s;
   border: 1px solid var(--border-color);
+  background-color: #f0f0f0;
+  color: var(--dark-text);
 }
 
-.q-box.answered {
-  background-color: var(--answered-color);
+.q-box.current {
+  background-color: var(--primary-blue);
   color: white;
-  border-color: var(--answered-color);
+  border-color: var(--primary-blue);
 }
 
-.q-box.unanswered {
-  background-color: var(--unanswered-color);
-  color: var(--dark-text);
-}
-
-.q-box.review {
-  background-color: var(--review-color);
-  color: var(--dark-text);
-  border-color: var(--review-color);
-}
-
-.q-box:hover {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
+/* Legend Styling */
 .legend {
   padding: 10px 20px;
-  margin-top: auto; /* Push to the bottom */
-}
-
-.legend-header {
-  font-size: 12px;
-  color: var(--light-text);
-  margin-bottom: 10px;
+  margin-top: auto;
+  border-top: 1px solid var(--border-color);
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  font-size: 12px;
+  font-size: 13px;
+  color: var(--dark-text);
   margin-bottom: 5px;
 }
 
@@ -178,20 +234,22 @@ body {
   border-color: var(--answered-color);
 }
 .unanswered-color {
-  background-color: var(--unanswered-color);
+  background-color: #f0f0f0;
 }
 .review-color {
   background-color: var(--review-color);
   border-color: var(--review-color);
 }
 
-/* --- 2. Main Content Area --- */
+/* --- 1.2 Main Content Area --- */
 .main-content {
   flex: 1;
-  background-color: #fff;
+  background-color: #f0f2f5;
   padding: 20px;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  border-right: 1px solid var(--border-color);
 }
 
 .question-container {
@@ -199,43 +257,68 @@ body {
   border: 1px solid var(--border-color);
   border-radius: 4px;
   padding: 20px;
-  background-color: #fcfcfc;
-  overflow-y: auto;
+  background-color: var(--box-bg);
+  box-shadow: var(--shadow-subtle);
 }
 
+/* --- Question Header Styling (FINAL) --- */
 .question-header {
   display: flex;
   align-items: center;
-  font-size: 13px;
-  color: var(--light-text);
+  padding-bottom: 5px;
 }
 
 .q-number {
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 600;
   color: var(--dark-text);
-  font-size: 15px;
+  margin-right: 15px;
 }
 
-.q-marks,
-.q-type {
-  margin-left: 15px;
-  padding-left: 15px;
-  border-left: 1px solid var(--border-color);
+/* Base style for the small information badges */
+.q-marks-badge,
+.q-type-badge {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-right: 10px;
+  line-height: 1.4;
 }
 
+/* 2 Marks Badge (Blue background, Blue text) */
+.q-marks-badge {
+  background-color: #e6f7ff;
+  color: var(--primary-blue);
+  border: 1px solid #91d5ff;
+}
+
+/* Multiple Choice Badge (White background, light grey text) */
+.q-type-badge {
+  background-color: #f5f5f5;
+  color: var(--dark-text);
+  border: 1px solid var(--border-color);
+}
+
+/* Mark for Review Button */
 .mark-review-btn {
   margin-left: auto;
-  background: none;
+  background: #fff;
   border: 1px solid var(--border-color);
   border-radius: 4px;
-  padding: 6px 12px;
+  padding: 8px 12px;
   cursor: pointer;
-  color: var(--light-text);
-  font-size: 13px;
+  color: var(--dark-text);
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
 }
 
 .mark-review-btn i {
-  margin-right: 5px;
+  margin-right: 8px;
+  font-size: 16px;
+  color: var(--dark-text);
 }
 
 .content-divider {
@@ -253,7 +336,7 @@ body {
 }
 
 .answer-label {
-  font-weight: bold;
+  font-weight: 600;
   color: var(--dark-text);
   margin-bottom: 10px;
 }
@@ -270,38 +353,6 @@ body {
   padding-left: 35px;
 }
 
-.option::before {
-  /* Placeholder for radio button look */
-  content: "";
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 14px;
-  height: 14px;
-  border: 1px solid #aaa;
-  border-radius: 50%;
-  background-color: white;
-}
-
-.option.selected {
-  border-color: var(--primary-blue);
-  background-color: #e6f7ff; /* Very light blue */
-}
-
-.option.selected::after {
-  /* Filled radio dot */
-  content: "";
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--primary-blue);
-}
-
 .action-buttons {
   margin-top: 20px;
   display: flex;
@@ -315,18 +366,14 @@ body {
   cursor: pointer;
   font-weight: 500;
   transition: background-color 0.2s;
-  display: flex;
-  align-items: center;
-}
-
-.action-buttons button i {
-  margin-right: 5px;
 }
 
 .save-btn {
   background-color: var(--primary-blue);
   color: white;
   border: none;
+  display: flex;
+  align-items: center;
 }
 
 .clear-btn {
@@ -335,71 +382,43 @@ body {
   border: 1px solid #ccc;
 }
 
-/* Bottom Pager */
-.bottom-pager {
+/* --- 1.3 Right Status Panel (Stack of Cards Design) --- */
+
+.status-panel-wrapper {
+  width: 280px;
+  background-color: #f0f2f5;
+  padding: 20px 20px 20px 15px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 15px;
-  margin-top: 15px;
-  border-top: 1px solid var(--border-color);
+  flex-direction: column;
+  gap: 15px;
+  overflow-y: auto;
 }
 
-.pager-btn {
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
-  padding: 8px 15px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 13px;
-  color: var(--dark-text);
-  transition: background-color 0.2s;
-}
-
-.pager-btn.next-btn {
-  background-color: var(--primary-blue);
-  color: white;
-  border-color: var(--primary-blue);
-}
-
-.pager-btn.disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.q-of-total {
-  font-weight: bold;
-  color: var(--dark-text);
-}
-
-.status-panel-container {
-  width: 320px; /* Constrain the panel width */
+/* Base styling for all card containers */
+.exam-progress-card,
+.exam-details-card,
+.status-block {
   background-color: var(--box-bg);
-  padding: 0 0 20px 0;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-subtle);
+  padding: 0;
 }
 
-/* --- Panel Header Style --- */
 .panel-header {
   font-size: 16px;
   font-weight: 600;
   color: var(--dark-text);
   padding: 15px 20px;
-  border-bottom: 1px solid var(--border-color);
 }
 
-/* --- 1. Exam Progress Section --- */
-.exam-progress-section {
-  padding: 0; /* Remove top/bottom padding as header has it */
-}
-
+/* --- Progress Bar Area (Inside Exam Progress Card) --- */
 .progress-info {
   display: flex;
   justify-content: space-between;
   font-size: 14px;
   color: var(--dark-text);
-  padding: 15px 20px 10px 20px;
+  padding: 5px 20px;
 }
 
 .progress-count {
@@ -410,165 +429,160 @@ body {
   height: 6px;
   background-color: #f0f0f0;
   border-radius: 3px;
-  margin: 0 20px 8px 20px;
+  margin: 5px 20px 5px 20px;
   overflow: hidden;
 }
 
 .progress-bar {
   height: 100%;
   background-color: var(--answered-color);
-  transition: width 0.3s;
 }
 
 .progress-percentage {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--light-text);
   padding: 0 20px 15px 20px;
   border-bottom: 1px solid var(--border-color);
 }
 
-/* Stat Cards (Answered/Remaining) */
+/* --- Stat Cards (Answered/Remaining) --- */
 .stat-cards-row {
   display: flex;
   justify-content: space-between;
-  padding: 15px 20px 25px 20px;
+  padding: 15px 20px;
   gap: 15px;
 }
 
 .stat-card {
   flex: 1;
-  background-color: #fff;
-  border: 1px solid #e8e8e8;
-  border-radius: 8px;
-  padding: 12px 10px;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
   display: flex;
   align-items: center;
-  /* Custom shadow to match the image's "lifted" look */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .stat-icon {
   font-size: 20px;
   margin-right: 10px;
-  padding: 6px;
+  padding: 8px;
   border-radius: 50%;
-  color: white; /* Icon itself is white */
 }
 
 .answered-icon {
-  background-color: var(--answered-color);
-}
-.remaining-icon {
-  /* The clock icon in the image is a plain gray outline */
-  background-color: #f0f0f0;
-  color: var(--remaining-color);
+  background-color: #f6ffed;
+  color: var(--answered-color);
+  border: 1px solid #d9f7be;
 }
 
-.stat-content {
-  display: flex;
-  flex-direction: column;
+.remaining-icon {
+  background-color: #f0f0f0;
+  color: var(--light-text);
+  border: 1px solid #d9d9d9;
 }
 
 .stat-value {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 1;
   color: var(--dark-text);
 }
 
 .stat-label {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--light-text);
   line-height: 1;
   margin-top: 3px;
 }
 
-/* --- 2. Status Blocks Section (Review, Connection, Auto-save) --- */
+/* --- Status Blocks (Individual Rounded Cards) --- */
 .status-blocks {
-  padding: 0 20px 20px 20px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .status-block {
+  padding: 15px 20px;
+  margin-bottom: 0;
+  /* KEY CHANGE: Ensure icon and text are vertically centered */
   display: flex;
   align-items: center;
-  border: 1px solid #e8e8e8;
-  border-radius: 8px;
-  padding: 10px 15px;
-  margin-bottom: 10px;
-  background-color: var(--box-bg);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Lighter shadow for these blocks */
 }
 
 .block-icon {
-  font-size: 18px;
+  /* KEY CHANGE: Define the box around the icon */
+  font-size: 20px;
   margin-right: 15px;
-  width: 25px; /* Fixed width for alignment */
-  text-align: center;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+
+  /* Default background colors/color */
+  background-color: #f0f4ff;
+  color: var(--primary-blue);
 }
 
 .block-text {
+  /* Ensures text remains stacked */
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .block-title {
-  font-size: 14px;
-  color: var(--light-text);
-  line-height: 1.2;
+  font-size: 15px;
+  color: var(--dark-text);
+  font-weight: 500;
 }
 
 .block-value {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--dark-text);
-  line-height: 1.2;
-}
-
-/* Individual Block Styles */
-
-/* Review */
-.review-icon {
-  color: var(--review-color);
-}
-
-/* Connection */
-.connection-icon {
-  color: var(--connection-color);
-}
-.connected-value {
-  color: var(--connection-color);
-  font-weight: 600;
-}
-
-/* Auto-save */
-.autosave-icon {
-  color: var(--autosave-color);
-}
-.autosave-value {
+  font-size: 13px;
+  font-weight: 400;
   color: var(--light-text);
-  font-size: 13px; /* Slightly smaller text for the long status message */
 }
 
-/* --- 3. Exam Details Section --- */
-.exam-details-section {
-  padding: 0;
+/* Specific Block Icon Colors (Background and Icon Color) */
+.review-block .block-icon {
+  color: var(--review-color);
+  background-color: #fffbe6;
+}
+.connection-block .block-icon {
+  color: var(--answered-color);
+  background-color: #f6ffed;
+}
+.connection-block .block-value {
+  color: var(--answered-color);
+  font-weight: 500;
+}
+.autosave-block .block-icon {
+  color: var(--primary-blue);
+  background-color: #f0f4ff;
 }
 
-.exam-details-section .panel-header {
-  border-bottom: none;
-  padding-bottom: 5px; /* Adjust spacing below the header */
+/* --- Exam Details Section (Separate Card) --- */
+.exam-details-card .panel-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .detail-row {
   display: flex;
   justify-content: space-between;
-  padding: 8px 20px;
+  padding: 10px 20px;
   font-size: 14px;
   color: var(--light-text);
+  border-bottom: 1px solid var(--border-color);
 }
 
-.detail-row span:first-child {
-  font-weight: 500;
+.exam-details-card .detail-row:last-child {
+  border-bottom: none;
 }
 
 .detail-value {
@@ -576,18 +590,65 @@ body {
   color: var(--dark-text);
 }
 
-/* Bottom Action Bar (Fixed at the bottom) */
+/* --- 2. Bottom Action Bar --- */
 .bottom-action-bar {
   height: 50px;
-  background-color: #f0f0f0;
+  background-color: #fff;
   border-top: 1px solid var(--border-color);
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   padding: 0 20px;
 }
-.bottom-action-bar button {
-  /* Styles for the Submit Exam button */
+
+.bottom-left-pager {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.bottom-center-status {
+  display: flex;
+  gap: 25px;
+}
+
+.status-item {
+  font-size: 13px;
+  color: var(--light-text);
+  display: flex;
+  align-items: center;
+}
+
+.status-item i {
+  margin-right: 5px;
+}
+
+.status-item.connected {
+  color: var(--answered-color);
+}
+
+.pager-btn {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--dark-text);
+}
+
+.pager-btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.q-of-total {
+  font-weight: 600;
+  color: var(--dark-text);
+  font-size: 15px;
+}
+
+.submit-btn {
   background-color: var(--primary-blue);
   color: white;
   border: none;
@@ -596,4 +657,6 @@ body {
   font-weight: bold;
   cursor: pointer;
   font-size: 15px;
+  display: flex;
+  align-items: center;
 }

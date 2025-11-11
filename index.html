@@ -3,24 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exam Interface Recreation</title>
+    <title>Advanced React Development - Final Assessment</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
     <div class="top-bar">
+        <div class="top-logo">Eggxams</div>
+        <div class="top-center-title">Advanced React Development - Final Assessment</div>
+        <div class="top-controls">
+            <span class="timer-box">
+                <i class="far fa-clock"></i> 00:29:56
+            </span>
+            <span class="status-box connected">
+                <i class="fas fa-wifi"></i> Connected
+            </span>
+            <span class="status-box secure-mode">
+                <i class="fas fa-lock"></i> Secure Mode
+            </span>
         </div>
+    </div>
 
     <div class="main-interface">
         
         <div class="sidebar">
-            <div class="header-info">
-                <span class="exam-title">Advanced React Development - Final Assessment</span>
-            </div>
-            <div class="user-info">
-                <div class="user-name">Karen Green</div>
-                <div class="user-details">STD ID: 4521</div>
+            <div class="user-profile">
+                <div class="avatar-placeholder">KG</div>
+                <div class="user-info-text">
+                    <div class="user-name">Karen Green</div>
+                    <div class="user-details">STD ID: 3525-4521</div>
+                </div>
+                <i class="fas fa-chevron-left sidebar-toggle"></i>
             </div>
             
             <hr class="sidebar-divider">
@@ -39,9 +53,9 @@
 
             <div class="nav-section">
                 <div class="nav-header">Question Navigator</div>
-                <div class="nav-subtext">Click to jump to a question</div>
+                <div class="nav-subtext">Click to jump to any question</div>
                 <div class="question-grid">
-                    <div class="q-box answered">1</div>
+                    <div class="q-box current">1</div>
                     <div class="q-box unanswered">2</div>
                     <div class="q-box unanswered">3</div>
                     <div class="q-box unanswered">4</div>
@@ -49,20 +63,52 @@
                     <div class="q-box unanswered">6</div>
                     <div class="q-box unanswered">7</div>
                     <div class="q-box unanswered">8</div>
-                    <div class="q-box review">9</div>
+                    <div class="q-box unanswered">9</div>
                     <div class="q-box unanswered">10</div>
                     <div class="q-box unanswered">11</div>
                     <div class="q-box unanswered">12</div>
-                    <div class="q-box unanswered">...</div>
+                    <div class="q-box unanswered">13</div>
+                    <div class="q-box unanswered">14</div>
+                    <div class="q-box unanswered">15</div>
+                    <div class="q-box unanswered">16</div>
+                    <div class="q-box unanswered">17</div>
+                    <div class="q-box unanswered">18</div>
+                    <div class="q-box unanswered">19</div>
+                    <div class="q-box unanswered">20</div>
+                    <div class="q-box unanswered">21</div>
+                    <div class="q-box unanswered">22</div>
+                    <div class="q-box unanswered">23</div>
+                    <div class="q-box unanswered">24</div>
+                    <div class="q-box unanswered">25</div>
+                    <div class="q-box unanswered">26</div>
+                    <div class="q-box unanswered">27</div>
+                    <div class="q-box unanswered">28</div>
+                    <div class="q-box unanswered">29</div>
+                    <div class="q-box unanswered">30</div>
+                    <div class="q-box unanswered">31</div>
+                    <div class="q-box unanswered">32</div>
+                    <div class="q-box unanswered">33</div>
+                    <div class="q-box unanswered">34</div>
+                    <div class="q-box unanswered">35</div>
+                    <div class="q-box unanswered">36</div>
+                    <div class="q-box unanswered">37</div>
+                    <div class="q-box unanswered">38</div>
+                    <div class="q-box unanswered">39</div>
+                    <div class="q-box unanswered">40</div>
+                    <div class="q-box unanswered">41</div>
+                    <div class="q-box unanswered">42</div>
+                    <div class="q-box unanswered">43</div>
+                    <div class="q-box unanswered">44</div>
+                    <div class="q-box unanswered">45</div>
+                    <div class="q-box unanswered">46</div>
+                    <div class="q-box unanswered">47</div>
+                    <div class="q-box unanswered">48</div>
                     <div class="q-box unanswered">49</div>
                     <div class="q-box unanswered">50</div>
                 </div>
             </div>
-
-            <hr class="sidebar-divider">
-
+            
             <div class="legend">
-                <div class="legend-header">Status Legend</div>
                 <div class="legend-item"><span class="legend-color answered-color"></span> Answered</div>
                 <div class="legend-item"><span class="legend-color unanswered-color"></span> Unanswered</div>
                 <div class="legend-item"><span class="legend-color review-color"></span> Review</div>
@@ -73,8 +119,11 @@
             <div class="question-container">
                 <div class="question-header">
                     <span class="q-number">Question 1 of 50</span>
-                    <span class="q-marks">2 Marks</span>
-                    <span class="q-type">Multiple Choice</span>
+                    
+                    <span class="q-marks-badge">2 Marks</span>
+                    
+                    <span class="q-type-badge">Multiple Choice</span>
+                    
                     <button class="mark-review-btn">
                         <i class="far fa-bookmark"></i> Mark for Review
                     </button>
@@ -89,117 +138,117 @@
                 <div class="answer-options">
                     <p class="answer-label">Your Answer</p>
                     <div class="option">To directly manipulate the browser DOM</div>
-                    <div class="option selected">To optimize rendering performance by minimizing direct DOM updates</div>
+                    <div class="option">To optimize rendering performance by minimizing direct DOM updates</div>
                     <div class="option">To store application state</div>
                     <div class="option">To handle routing in React applications</div>
                 </div>
 
                 <div class="action-buttons">
                     <button class="save-btn"><i class="fas fa-check"></i> Save Answer</button>
-                    <button class="clear-btn"><i class="fas fa-times"></i> Clear</button>
+                    <button class="clear-btn">Clear</button>
                 </div>
             </div>
-
-            <div class="bottom-pager">
-                <button class="pager-btn disabled">
-                    <i class="fas fa-chevron-left"></i> Previous
-                </button>
-                <div class="q-of-total">Question 1 of 50</div>
-                <button class="pager-btn next-btn">
-                    Next <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
         </div>
-<div class="status-panel-container">
-        
-        <div class="panel-section exam-progress-section">
-            <div class="panel-header">Exam Progress</div>
-            
-            <div class="progress-info">
-                Questions Answered
-                <span class="progress-count">0 / 50</span>
-            </div>
-            
-            <div class="progress-bar-container">
-                <div class="progress-bar" style="width: 0%;"></div>
-            </div>
-            
-            <div class="progress-percentage">0% Complete</div>
 
-            <div class="stat-cards-row">
-                <div class="stat-card answered-card">
-                    <i class="far fa-clock stat-icon answered-icon"></i> 
-                    <div class="stat-content">
-                        <span class="stat-value">0</span>
-                        <span class="stat-label">Answered</span>
+        <div class="status-panel-wrapper"> 
+            
+            <div class="exam-progress-card">
+                <div class="panel-header">Exam Progress</div>
+                
+                <div class="progress-info">
+                    Questions Answered
+                    <span class="progress-count">0 / 50</span>
+                </div>
+                
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 0%;"></div>
+                </div>
+                
+                <div class="progress-percentage">0% Complete</div>
+
+                <div class="stat-cards-row">
+                    <div class="stat-card">
+                        <i class="far fa-check-circle stat-icon answered-icon"></i> 
+                        <div class="stat-content">
+                            <span class="stat-value">0</span>
+                            <span class="stat-label">Answered</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <i class="far fa-clock stat-icon remaining-icon"></i> 
+                        <div class="stat-content">
+                            <span class="stat-value">50</span>
+                            <span class="stat-label">Remaining</span>
+                        </div>
                     </div>
                 </div>
-
-                <div class="stat-card remaining-card">
-                    <i class="fas fa-history stat-icon remaining-icon"></i>
-                    <div class="stat-content">
-                        <span class="stat-value">50</span>
-                        <span class="stat-label">Remaining</span>
+            </div> <div class="status-blocks">
+                
+                <div class="status-block review-block">
+                    <div class="block-icon">
+                        <i class="fas fa-bookmark"></i>
+                    </div>
+                    <div class="block-text">
+                        <span class="block-title">Marked for Review</span>
+                        <span class="block-value">0 questions</span>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <div class="status-blocks">
-            
-            <div class="status-block review-block">
-                <div class="block-icon review-icon">
-                    <i class="fas fa-bookmark"></i>
+                
+                <div class="status-block connection-block">
+                    <div class="block-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <div class="block-text">
+                        <span class="block-title">Connection</span>
+                        <span class="block-value connected-value">Connected</span>
+                    </div>
                 </div>
-                <div class="block-text">
-                    <span class="block-title">Marked for Review</span>
-                    <span class="block-value">0 questions</span>
+                
+                <div class="status-block autosave-block">
+                    <div class="block-icon">
+                        <i class="fas fa-save"></i>
+                    </div>
+                    <div class="block-text">
+                        <span class="block-title">Auto-save</span>
+                        <span class="block-value autosave-value">Last saved Not saved yet</span>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="status-block connection-block">
-                <div class="block-icon connection-icon">
-                    <i class="fas fa-wifi"></i>
+            </div> <div class="exam-details-card">
+                <div class="panel-header">Exam Details</div>
+                
+                <div class="detail-row">
+                    <span>Total Questions</span>
+                    <span class="detail-value">50</span>
                 </div>
-                <div class="block-text">
-                    <span class="block-title">Connection</span>
-                    <span class="block-value connected-value">Connected</span>
+                <div class="detail-row">
+                    <span>Total Marks</span>
+                    <span class="detail-value">100</span>
                 </div>
-            </div>
-            
-            <div class="status-block autosave-block">
-                <div class="block-icon autosave-icon">
-                    <i class="fas fa-save"></i>
+                <div class="detail-row">
+                    <span>Duration</span>
+                    <span class="detail-value">120 minutes</span>
                 </div>
-                <div class="block-text">
-                    <span class="block-title">Auto-save</span>
-                    <span class="block-value autosave-value">Last saved Not saved yet</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="panel-section exam-details-section">
-            <div class="panel-header">Exam Details</div>
-            
-            <div class="detail-row">
-                <span>Total Questions</span>
-                <span class="detail-value">50</span>
-            </div>
-            <div class="detail-row">
-                <span>Total Marks</span>
-                <span class="detail-value">100</span>
-            </div>
-            <div class="detail-row">
-                <span>Duration</span>
-                <span class="detail-value">120 minutes</span>
-            </div>
-        </div>
-
-    </div>
-    </div>
+            </div> </div> </div>
 
     <div class="bottom-action-bar">
+        <div class="bottom-left-pager">
+            <button class="pager-btn disabled">
+                <i class="fas fa-chevron-left"></i> Previous
+            </button>
+            <div class="q-of-total">Question 1 of 50</div>
+            <button class="pager-btn">
+                Next <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
+        <div class="bottom-center-status">
+            <span class="status-item connected"><i class="fas fa-wifi"></i> Connected</span>
+            <span class="status-item chat"><i class="fas fa-comment-dots"></i> Chat with Proctor</span>
+        </div>
+        <button class="submit-btn">
+            <i class="fas fa-paper-plane"></i> Submit Exam
+        </button>
+    </div>
 
 </body>
 </html>
