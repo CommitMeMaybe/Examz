@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Interface Recreation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <div class="top-bar">
+        </div>
+
+    <div class="main-interface">
+        
+        <div class="sidebar">
+            <div class="header-info">
+                <span class="exam-title">Advanced React Development - Final Assessment</span>
+            </div>
+            <div class="user-info">
+                <div class="user-name">Karen Green</div>
+                <div class="user-details">STD ID: 4521</div>
+            </div>
+            
+            <hr class="sidebar-divider">
+
+            <div class="menu-item active">
+                <i class="fas fa-question-circle"></i> Questions
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-info-circle"></i> Instructions
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-headset"></i> Support
+            </div>
+
+            <hr class="sidebar-divider">
+
+            <div class="nav-section">
+                <div class="nav-header">Question Navigator</div>
+                <div class="nav-subtext">Click to jump to a question</div>
+                <div class="question-grid">
+                    <div class="q-box answered">1</div>
+                    <div class="q-box unanswered">2</div>
+                    <div class="q-box unanswered">3</div>
+                    <div class="q-box unanswered">4</div>
+                    <div class="q-box unanswered">5</div>
+                    <div class="q-box unanswered">6</div>
+                    <div class="q-box unanswered">7</div>
+                    <div class="q-box unanswered">8</div>
+                    <div class="q-box review">9</div>
+                    <div class="q-box unanswered">10</div>
+                    <div class="q-box unanswered">11</div>
+                    <div class="q-box unanswered">12</div>
+                    <div class="q-box unanswered">...</div>
+                    <div class="q-box unanswered">49</div>
+                    <div class="q-box unanswered">50</div>
+                </div>
+            </div>
+
+            <hr class="sidebar-divider">
+
+            <div class="legend">
+                <div class="legend-header">Status Legend</div>
+                <div class="legend-item"><span class="legend-color answered-color"></span> Answered</div>
+                <div class="legend-item"><span class="legend-color unanswered-color"></span> Unanswered</div>
+                <div class="legend-item"><span class="legend-color review-color"></span> Review</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="question-container">
+                <div class="question-header">
+                    <span class="q-number">Question 1 of 50</span>
+                    <span class="q-marks">2 Marks</span>
+                    <span class="q-type">Multiple Choice</span>
+                    <button class="mark-review-btn">
+                        <i class="far fa-bookmark"></i> Mark for Review
+                    </button>
+                </div>
+                
+                <hr class="content-divider">
+
+                <p class="question-text">
+                    What is the primary purpose of the React Virtual DOM?
+                </p>
+
+                <div class="answer-options">
+                    <p class="answer-label">Your Answer</p>
+                    <div class="option">To directly manipulate the browser DOM</div>
+                    <div class="option selected">To optimize rendering performance by minimizing direct DOM updates</div>
+                    <div class="option">To store application state</div>
+                    <div class="option">To handle routing in React applications</div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="save-btn"><i class="fas fa-check"></i> Save Answer</button>
+                    <button class="clear-btn"><i class="fas fa-times"></i> Clear</button>
+                </div>
+            </div>
+
+            <div class="bottom-pager">
+                <button class="pager-btn disabled">
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <div class="q-of-total">Question 1 of 50</div>
+                <button class="pager-btn next-btn">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="status-panel">
+            <div class="panel-header">Exam Progress</div>
+            <div class="progress-section">
+                <p>Questions Answered</p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar answered-progress" style="width: 2%;"></div>
+                </div>
+                <div class="progress-stats">
+                    <div class="stat-item">
+                        <span class="stat-value answered-value">1</span>
+                        <span class="stat-label">Answered</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">49</span>
+                        <span class="stat-label">Remaining</span>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="panel-divider">
+
+            <div class="status-box">
+                <p class="box-title answered-box-title">Answered</p>
+                <p class="box-value">1 question</p>
+            </div>
+            <div class="status-box">
+                <p class="box-title review-box-title">Marked for Review</p>
+                <p class="box-value">0 questions</p>
+            </div>
+            <div class="status-box connection-box">
+                <p class="box-title">Connection</p>
+                <p class="box-value connected-text">Connected</p>
+            </div>
+            <div class="status-box autosave-box">
+                <p class="box-title">Auto-save</p>
+                <p class="box-value autosave-text">Last saved Never. Next save in 30s</p>
+            </div>
+
+            <hr class="panel-divider">
+
+            <div class="exam-details">
+                <p class="panel-header">Exam Details</p>
+                <div class="detail-row"><span>Total Questions</span><span>50</span></div>
+                <div class="detail-row"><span>Total Marks</span><span>100</span></div>
+                <div class="detail-row"><span>Duration</span><span>120 mins</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-action-bar">
+        </div>
+
+</body>
+</html>
