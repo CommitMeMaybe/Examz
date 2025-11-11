@@ -110,54 +110,92 @@
                 </button>
             </div>
         </div>
-
-        <div class="status-panel">
+<div class="status-panel-container">
+        
+        <div class="panel-section exam-progress-section">
             <div class="panel-header">Exam Progress</div>
-            <div class="progress-section">
-                <p>Questions Answered</p>
-                <div class="progress-bar-container">
-                    <div class="progress-bar answered-progress" style="width: 2%;"></div>
-                </div>
-                <div class="progress-stats">
-                    <div class="stat-item">
-                        <span class="stat-value answered-value">1</span>
+            
+            <div class="progress-info">
+                Questions Answered
+                <span class="progress-count">0 / 50</span>
+            </div>
+            
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 0%;"></div>
+            </div>
+            
+            <div class="progress-percentage">0% Complete</div>
+
+            <div class="stat-cards-row">
+                <div class="stat-card answered-card">
+                    <i class="far fa-clock stat-icon answered-icon"></i> 
+                    <div class="stat-content">
+                        <span class="stat-value">0</span>
                         <span class="stat-label">Answered</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-value">49</span>
+                </div>
+
+                <div class="stat-card remaining-card">
+                    <i class="fas fa-history stat-icon remaining-icon"></i>
+                    <div class="stat-content">
+                        <span class="stat-value">50</span>
                         <span class="stat-label">Remaining</span>
                     </div>
                 </div>
             </div>
-
-            <hr class="panel-divider">
-
-            <div class="status-box">
-                <p class="box-title answered-box-title">Answered</p>
-                <p class="box-value">1 question</p>
+        </div>
+        
+        <div class="status-blocks">
+            
+            <div class="status-block review-block">
+                <div class="block-icon review-icon">
+                    <i class="fas fa-bookmark"></i>
+                </div>
+                <div class="block-text">
+                    <span class="block-title">Marked for Review</span>
+                    <span class="block-value">0 questions</span>
+                </div>
             </div>
-            <div class="status-box">
-                <p class="box-title review-box-title">Marked for Review</p>
-                <p class="box-value">0 questions</p>
+            
+            <div class="status-block connection-block">
+                <div class="block-icon connection-icon">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <div class="block-text">
+                    <span class="block-title">Connection</span>
+                    <span class="block-value connected-value">Connected</span>
+                </div>
             </div>
-            <div class="status-box connection-box">
-                <p class="box-title">Connection</p>
-                <p class="box-value connected-text">Connected</p>
-            </div>
-            <div class="status-box autosave-box">
-                <p class="box-title">Auto-save</p>
-                <p class="box-value autosave-text">Last saved Never. Next save in 30s</p>
-            </div>
-
-            <hr class="panel-divider">
-
-            <div class="exam-details">
-                <p class="panel-header">Exam Details</p>
-                <div class="detail-row"><span>Total Questions</span><span>50</span></div>
-                <div class="detail-row"><span>Total Marks</span><span>100</span></div>
-                <div class="detail-row"><span>Duration</span><span>120 mins</span></div>
+            
+            <div class="status-block autosave-block">
+                <div class="block-icon autosave-icon">
+                    <i class="fas fa-save"></i>
+                </div>
+                <div class="block-text">
+                    <span class="block-title">Auto-save</span>
+                    <span class="block-value autosave-value">Last saved Not saved yet</span>
+                </div>
             </div>
         </div>
+
+        <div class="panel-section exam-details-section">
+            <div class="panel-header">Exam Details</div>
+            
+            <div class="detail-row">
+                <span>Total Questions</span>
+                <span class="detail-value">50</span>
+            </div>
+            <div class="detail-row">
+                <span>Total Marks</span>
+                <span class="detail-value">100</span>
+            </div>
+            <div class="detail-row">
+                <span>Duration</span>
+                <span class="detail-value">120 minutes</span>
+            </div>
+        </div>
+
+    </div>
     </div>
 
     <div class="bottom-action-bar">
