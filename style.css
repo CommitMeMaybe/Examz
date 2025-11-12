@@ -36,9 +36,15 @@ body {
 }
 
 .top-logo {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--dark-text);
+  width: 100px;
+  height: 40px;
+}
+
+.top-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 .top-logo span {
@@ -58,33 +64,67 @@ body {
   gap: 15px;
 }
 
+/* --- 0. Top Navigation Bar --- (Updated Timer Box) */
 .timer-box {
-  background-color: #ffe58f;
-  color: #faad14;
-  padding: 5px 10px;
-  border-radius: 4px;
+  /* Use green-related colors */
+  background-color: #f6ffed; /* Light green background (similar to status block) */
+  color: var(--answered-color); /* Green text/icon color */
+  border: 1px solid #b7eb8f; /* Subtle green border */
+  padding: 8px 15px;
+  border-radius: 12px; /* Highly rounded corners for the 'pill' shape */
   font-weight: 600;
-  font-size: 13px;
+  font-size: 14px;
+
+  /* Ensure content is laid out horizontally, especially after adding an icon */
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between icon and time */
 }
+
+/* --- 0. Top Navigation Bar --- (Updated Status Boxes) */
 
 .status-box {
   display: flex;
   align-items: center;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 12px; /* Increased size slightly for visual balance */
+  font-weight: 400; /* Increased weight for clarity */
+  padding: 2px 8px; /* Adjusted padding */
+  border-radius: 12px; /* Highly rounded corners for the pill shape */
+
+  /* Default icon styling, if needed */
+  /* .status-box i {
+        margin-right: 5px;
+        font-size: 14px;
+    } */
 }
 
-.status-box i {
-  margin-right: 5px;
-  font-size: 14px;
-}
-
+/* 1. Connected Status (Green Icon/Text with Transparent Box) */
 .status-box.connected {
+  /* Color remains green/answered-color */
   color: var(--answered-color);
+  background-color: transparent; /* No background color */
+  border: none; /* No border */
+}
+/* Ensure the icon for the connected status adopts the green color */
+.status-box.connected i {
+  color: var(--answered-color);
+  font-size: 16px; /* Slightly larger icon for better visibility */
+  margin-right: 5px;
 }
 
+/* 2. Secure Mode Status (Blue Icon/Text with Light Blue Background & Border) */
 .status-box.secure-mode {
-  color: #fa541c;
+  color: var(--primary-blue); /* Blue text */
+  background-color: #e6f7ff; /* Light blue background (from var(--current-q-bg) but specified here for context) */
+  border: 1px solid #91d5ff; /* Blue border */
+  /* Removed custom orange color, using blue theme instead */
+  /* padding and border-radius are inherited */
+}
+/* Ensure the icon for the secure mode status adopts the blue color */
+.status-box.secure-mode i {
+  color: var(--primary-blue);
+  font-size: 12px;
+  margin-right: 5px;
 }
 
 /* --- 1. Main Interface Layout --- */
@@ -208,41 +248,63 @@ body {
   gap: 8px;
 }
 
+/* --- 1.1 Left Sidebar - Question Grid (Updated q-box styles) --- */
+
 .q-box {
-  padding: 8px 0;
+  padding: 10px 0; /* Slightly more vertical padding */
   text-align: center;
-  border-radius: 4px;
-  font-weight: 500;
+  border-radius: 8px; /* High rounding to match the image */
+  font-weight: 400;
   cursor: pointer;
-  transition: all 0.1s;
-  border: 1px solid var(--border-color);
-  background-color: #f0f0f0;
+  transition: all 0.2s; /* Increased transition time for softer effects */
+
+  /* REMOVED: 1px solid var(--border-color); */
+  border: none; /* Remove explicit border */
+
+  /* UNANSWERED/DEFAULT STATE: Light background with a subtle shadow */
+  background-color: #f7f7f7; /* Very light background for the base state */
   color: var(--dark-text);
-  line-height: 1; /* fix vertical alignment */
+  /* Subtle box shadow to create the 'lift' effect shown in the image */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+
+  line-height: 1;
   user-select: none;
 }
 
 .q-box:hover {
-  border-color: var(--primary-blue);
+  /* Lift slightly more on hover */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  background-color: #fff; /* White background on hover */
+  /* REMOVED: border-color: var(--primary-blue); */
 }
 
+/* Specific Status Styles - Adjusted to use the new soft design */
+
 .q-box.answered {
+  /* Green filled style remains high-contrast */
   background-color: var(--answered-color);
-  border-color: var(--answered-color);
+  border-color: var(
+    --answered-color
+  ); /* Kept border-color property for clarity, even if border: none; is used */
   color: white;
+  box-shadow: 0 2px 4px rgba(82, 196, 26, 0.4); /* Green shadow for lift */
 }
 
 .q-box.review {
+  /* Orange filled style remains high-contrast */
   background-color: var(--review-color);
   border-color: var(--review-color);
   color: white;
+  box-shadow: 0 2px 4px rgba(250, 173, 20, 0.4); /* Orange shadow for lift */
 }
 
 .q-box.current {
+  /* Blue current style remains high-contrast */
   background-color: var(--primary-blue);
   color: white;
   border-color: var(--primary-blue);
-  box-shadow: 0 0 0 2px var(--current-q-bg);
+  /* Changed box shadow to be less distracting, using a blue shadow for the lift */
+  box-shadow: 0 0 0 3px #91d5ff, 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 /* Legend Styling */
@@ -296,7 +358,7 @@ body {
 .question-container {
   flex-grow: 1;
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-radius: 12px;
   padding: 20px;
   background-color: var(--box-bg);
   box-shadow: var(--shadow-subtle);
@@ -306,7 +368,7 @@ body {
 .question-header {
   display: flex;
   align-items: center;
-  padding-bottom: 5px;
+  padding-bottom: 15px;
   margin-bottom: 15px;
   border-bottom: 1px solid var(--border-color);
 }
@@ -324,7 +386,7 @@ body {
   font-size: 12px;
   font-weight: 500;
   padding: 3px 8px;
-  border-radius: 4px;
+  border-radius: 10px;
   margin-right: 10px;
   line-height: 1.4;
   flex-shrink: 0;
@@ -349,7 +411,7 @@ body {
   margin-left: auto;
   background: #fff;
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-radius: 10px;
   padding: 8px 12px;
   cursor: pointer;
   color: var(--dark-text);
@@ -413,35 +475,44 @@ body {
   display: flex;
   gap: 10px;
 }
+/* --- Action Buttons (Inside Main Content Area) --- */
 
 .action-buttons button {
-  padding: 8px 15px;
-  border-radius: 4px;
+  padding: 10px 20px; /* Slightly more padding for a larger touch target */
+  border-radius: 8px; /* More rounded corners to match the image */
   font-size: 14px;
   cursor: pointer;
   font-weight: 500;
-  transition: background-color 0.2s;
-}
-
-.save-btn {
-  background-color: var(--primary-blue);
-  color: white;
-  border: none;
-  display: flex;
+  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  display: flex; /* Ensure flex properties persist */
   align-items: center;
 }
+
+/* 1. Save Button (Dark/Black Style) */
+.save-btn {
+  background-color: var(
+    --dark-text
+  ); /* Use dark-text variable (which is #333) or black (#000) */
+  color: white;
+  border: 1px solid var(--dark-text); /* Solid border for consistency */
+  gap: 8px; /* Increased gap between icon and text */
+}
 .save-btn:hover {
-  background-color: #096dd9;
+  background-color: #000; /* Darken slightly on hover if using #333, or keep black */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add a subtle lift */
 }
 
+/* 2. Clear Button (Outline White Style) */
 .clear-btn {
   background-color: #fff;
-  color: var(--light-text);
-  border: 1px solid #ccc;
+  color: var(--dark-text); /* Text color should be dark */
+  border: 1px solid #ccc; /* Subtle light border */
+  gap: 8px;
 }
 .clear-btn:hover {
-  border-color: #999;
-  color: var(--dark-text);
+  border-color: var(--primary-blue); /* Optional: Blue border on hover */
+  color: var(--primary-blue); /* Optional: Blue text on hover */
+  background-color: #f5f5f5;
 }
 
 /* --- 1.3 Right Status Panel (Stack of Cards Design) --- */
@@ -452,8 +523,8 @@ body {
   padding: 20px 20px 20px 15px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  overflow-y: auto;
+  gap: 10px;
+
   flex-shrink: 0;
 }
 
@@ -463,7 +534,7 @@ body {
 .status-block {
   background-color: var(--box-bg);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: var(--shadow-subtle);
   padding: 0;
 }
@@ -506,7 +577,7 @@ body {
 .progress-percentage {
   font-size: 13px;
   color: var(--light-text);
-  padding: 0 20px 15px 20px;
+  padding: 0 20px 30px 20px;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -527,12 +598,16 @@ body {
   display: flex;
   align-items: center;
 }
-
 .stat-icon {
-  font-size: 20px;
-  margin-right: 10px;
-  padding: 8px;
-  border-radius: 50%;
+  /* Styles for the icon's background box */
+  font-size: 14px; /* Reduced icon size slightly to fit the box better */
+  margin-right: 6px;
+  width: 32px; /* Increased size for padding */
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px; /* Slightly more rounded corners */
   flex-shrink: 0;
 }
 
@@ -550,13 +625,14 @@ body {
 
 .stat-value {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1;
   color: var(--dark-text);
 }
 
 .stat-label {
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: 300;
   color: var(--light-text);
   line-height: 1.2;
   margin-top: 3px;
@@ -608,12 +684,12 @@ body {
 .block-title {
   font-size: 15px;
   color: var(--dark-text);
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .block-value {
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 300;
   color: var(--light-text);
 }
 
