@@ -3,7 +3,7 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f5f5f5;
+  background-color: #f0f2f5; /* Light background for the overall app */
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -38,6 +38,10 @@ body {
 .top-logo {
   font-size: 18px;
   font-weight: 700;
+  color: var(--dark-text);
+}
+
+.top-logo span {
   color: var(--primary-blue);
 }
 
@@ -67,6 +71,7 @@ body {
   display: flex;
   align-items: center;
   font-size: 13px;
+  font-weight: 500;
 }
 
 .status-box i {
@@ -91,13 +96,15 @@ body {
 
 /* --- 1.1 Left Sidebar --- */
 .sidebar {
-  width: 250px;
-  background-color: #fff;
+  /* Adjusted width to accommodate 5 columns in question-grid */
+  width: 300px;
+  background-color: var(--box-bg);
   border-right: 1px solid var(--border-color);
   padding: 20px 0;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  flex-shrink: 0;
 }
 
 .user-profile {
@@ -118,6 +125,11 @@ body {
   font-weight: bold;
   font-size: 16px;
   margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.user-info {
+  line-height: 1.2;
 }
 
 .user-name {
@@ -136,7 +148,8 @@ body {
   margin-left: auto;
   color: var(--light-text);
   cursor: pointer;
-  font-size: 12px;
+  font-size: 18px;
+  align-self: center;
 }
 
 .sidebar-divider {
@@ -148,7 +161,7 @@ body {
 .menu-item {
   padding: 10px 20px;
   cursor: pointer;
-  color: var(--light-text);
+  color: var(--dark-text);
   display: flex;
   align-items: center;
   font-weight: 500;
@@ -157,12 +170,19 @@ body {
 .menu-item i {
   margin-right: 10px;
   font-size: 16px;
+  /* Inactive icons are dark/grey */
+  color: var(--dark-text);
 }
 
 .menu-item.active {
   background-color: var(--current-q-bg);
   color: var(--primary-blue);
   font-weight: 600;
+  border-right: 3px solid var(--primary-blue);
+}
+/* Ensure the icon within the active item also adopts the blue color */
+.menu-item.active i {
+  color: var(--primary-blue);
 }
 
 .nav-section {
@@ -170,13 +190,14 @@ body {
 }
 
 .nav-header {
+  font-size: 16px;
   font-weight: 600;
   color: var(--dark-text);
   margin-bottom: 5px;
 }
 
 .nav-subtext {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--light-text);
   margin-bottom: 10px;
 }
@@ -193,16 +214,35 @@ body {
   border-radius: 4px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.1s;
+  transition: all 0.1s;
   border: 1px solid var(--border-color);
   background-color: #f0f0f0;
   color: var(--dark-text);
+  line-height: 1; /* fix vertical alignment */
+  user-select: none;
+}
+
+.q-box:hover {
+  border-color: var(--primary-blue);
+}
+
+.q-box.answered {
+  background-color: var(--answered-color);
+  border-color: var(--answered-color);
+  color: white;
+}
+
+.q-box.review {
+  background-color: var(--review-color);
+  border-color: var(--review-color);
+  color: white;
 }
 
 .q-box.current {
   background-color: var(--primary-blue);
   color: white;
   border-color: var(--primary-blue);
+  box-shadow: 0 0 0 2px var(--current-q-bg);
 }
 
 /* Legend Styling */
@@ -210,6 +250,8 @@ body {
   padding: 10px 20px;
   margin-top: auto;
   border-top: 1px solid var(--border-color);
+  display: flex;
+  gap: 15px;
 }
 
 .legend-item {
@@ -217,14 +259,13 @@ body {
   align-items: center;
   font-size: 13px;
   color: var(--dark-text);
-  margin-bottom: 5px;
 }
 
 .legend-color {
   display: inline-block;
   width: 12px;
   height: 12px;
-  margin-right: 8px;
+  margin-right: 5px;
   border-radius: 2px;
   border: 1px solid var(--border-color);
 }
@@ -261,11 +302,13 @@ body {
   box-shadow: var(--shadow-subtle);
 }
 
-/* --- Question Header Styling (FINAL) --- */
+/* --- Question Header Styling --- */
 .question-header {
   display: flex;
   align-items: center;
   padding-bottom: 5px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .q-number {
@@ -284,6 +327,7 @@ body {
   border-radius: 4px;
   margin-right: 10px;
   line-height: 1.4;
+  flex-shrink: 0;
 }
 
 /* 2 Marks Badge (Blue background, Blue text) */
@@ -313,8 +357,12 @@ body {
   font-weight: 500;
   display: flex;
   align-items: center;
+  transition: all 0.2s;
 }
-
+.mark-review-btn:hover {
+  border-color: #aaa;
+  box-shadow: var(--shadow-subtle);
+}
 .mark-review-btn i {
   margin-right: 8px;
   font-size: 16px;
@@ -350,7 +398,14 @@ body {
   margin-bottom: 10px;
   transition: all 0.2s;
   position: relative;
-  padding-left: 35px;
+}
+.option:hover {
+  border-color: var(--primary-blue);
+}
+.option.selected {
+  background-color: var(--current-q-bg);
+  border-color: var(--primary-blue);
+  font-weight: 500;
 }
 
 .action-buttons {
@@ -375,11 +430,18 @@ body {
   display: flex;
   align-items: center;
 }
+.save-btn:hover {
+  background-color: #096dd9;
+}
 
 .clear-btn {
   background-color: #fff;
   color: var(--light-text);
   border: 1px solid #ccc;
+}
+.clear-btn:hover {
+  border-color: #999;
+  color: var(--dark-text);
 }
 
 /* --- 1.3 Right Status Panel (Stack of Cards Design) --- */
@@ -392,6 +454,7 @@ body {
   flex-direction: column;
   gap: 15px;
   overflow-y: auto;
+  flex-shrink: 0;
 }
 
 /* Base styling for all card containers */
@@ -436,6 +499,8 @@ body {
 .progress-bar {
   height: 100%;
   background-color: var(--answered-color);
+  width: 0%; /* Initial width */
+  transition: width 0.3s;
 }
 
 .progress-percentage {
@@ -468,6 +533,7 @@ body {
   margin-right: 10px;
   padding: 8px;
   border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .answered-icon {
@@ -492,7 +558,7 @@ body {
 .stat-label {
   font-size: 14px;
   color: var(--light-text);
-  line-height: 1;
+  line-height: 1.2;
   margin-top: 3px;
 }
 
@@ -507,21 +573,25 @@ body {
 .status-block {
   padding: 15px 20px;
   margin-bottom: 0;
-  /* KEY CHANGE: Ensure icon and text are vertically centered */
+  /* KEY FIX: Ensure icon and text are vertically centered in a row */
   display: flex;
   align-items: center;
 }
 
 .block-icon {
-  /* KEY CHANGE: Define the box around the icon */
-  font-size: 20px;
+  /* Styles for the icon's background box */
+  font-size: 16px; /* Reduced icon size slightly to fit the box better */
   margin-right: 15px;
-  width: 30px;
-  height: 30px;
+  width: 32px; /* Increased size for padding */
+  height: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 4px;
+  border-radius: 6px; /* Slightly more rounded corners */
+  flex-shrink: 0;
+
+  /* ADDED: Base transparent border for a contained look */
+  border: 1px solid transparent;
 
   /* Default background colors/color */
   background-color: #f0f4ff;
@@ -529,7 +599,7 @@ body {
 }
 
 .block-text {
-  /* Ensures text remains stacked */
+  /* Ensures title and value text remains stacked */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -551,10 +621,14 @@ body {
 .review-block .block-icon {
   color: var(--review-color);
   background-color: #fffbe6;
+  /* ADDED: Specific border color */
+  border-color: #ffe7ba;
 }
 .connection-block .block-icon {
   color: var(--answered-color);
   background-color: #f6ffed;
+  /* ADDED: Specific border color */
+  border-color: #b7eb8f;
 }
 .connection-block .block-value {
   color: var(--answered-color);
@@ -563,6 +637,8 @@ body {
 .autosave-block .block-icon {
   color: var(--primary-blue);
   background-color: #f0f4ff;
+  /* ADDED: Specific border color */
+  border-color: #91d5ff;
 }
 
 /* --- Exam Details Section (Separate Card) --- */
@@ -592,31 +668,84 @@ body {
 
 /* --- 2. Bottom Action Bar --- */
 .bottom-action-bar {
-  height: 50px;
-  background-color: #fff;
+  /* Increased height for better spacing */
+  height: 60px;
+  background-color: var(--box-bg);
   border-top: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+  flex-shrink: 0;
 }
 
 .bottom-left-pager {
   display: flex;
   align-items: center;
-  gap: 15px;
+  /* Reduced gap between pager elements */
+  gap: 8px;
+}
+
+.pager-btn {
+  /* New styles for the subtle, border-only look */
+  background-color: white;
+  color: var(--dark-text);
+  border: 1px solid var(--border-color);
+  padding: 10px 15px;
+  border-radius: 6px; /* Slightly more rounded */
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s;
+}
+
+.pager-btn:hover:not(.disabled) {
+  background-color: #f5f5f5;
+  border-color: var(--primary-blue);
+  color: var(--primary-blue);
+}
+
+.pager-btn.disabled {
+  color: var(--light-text);
+  cursor: not-allowed;
+  background-color: #fafafa;
+  border-color: #f0f0f0;
+}
+
+.q-of-total {
+  /* Styling for the middle question status block */
+  background-color: #f7f7f7; /* Light background */
+  color: var(--dark-text);
+  border-radius: 6px;
+  padding: 10px 15px;
+  font-weight: 600;
+  font-size: 14px;
 }
 
 .bottom-center-status {
   display: flex;
-  gap: 25px;
+  /* Adjusted gap for closer status items */
+  gap: 20px;
+  align-items: center;
 }
 
 .status-item {
-  font-size: 13px;
-  color: var(--light-text);
+  font-size: 14px;
+  color: var(--dark-text); /* Changed to dark text */
   display: flex;
   align-items: center;
+  font-weight: 500;
+  /* Added subtle styling for interaction/clarity */
+  padding: 8px 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+.status-item:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
 }
 
 .status-item i {
@@ -625,38 +754,32 @@ body {
 
 .status-item.connected {
   color: var(--answered-color);
+  /* Icon color remains green */
 }
-
-.pager-btn {
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
-  padding: 8px 15px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 13px;
-  color: var(--dark-text);
-}
-
-.pager-btn.disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.q-of-total {
-  font-weight: 600;
-  color: var(--dark-text);
-  font-size: 15px;
+.status-item:not(.connected) i {
+  color: var(--light-text); /* Ensure neutral icons are grey */
 }
 
 .submit-btn {
-  background-color: var(--primary-blue);
+  /* New styles for the vibrant, bold blue button */
+  background-color: #0066ff; /* A slightly deeper, vibrant blue */
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-weight: bold;
+  padding: 12px 25px; /* Taller button */
+  border-radius: 6px;
+  font-weight: 600;
   cursor: pointer;
   font-size: 15px;
   display: flex;
   align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+  box-shadow: 0 2px 6px rgba(0, 102, 255, 0.4);
+}
+.submit-btn:hover {
+  background-color: #0056e6;
+  box-shadow: 0 4px 8px rgba(0, 102, 255, 0.5);
+}
+.submit-btn i {
+  font-size: 16px;
 }

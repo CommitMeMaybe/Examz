@@ -3,111 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced React Development - Final Assessment</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Advanced Exam Assessment</title>
+    <!-- Link to the external stylesheet -->
+    <link rel="stylesheet" href="style.css"> 
+    <!-- Load Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
+    <!-- 0. Top Navigation Bar -->
     <div class="top-bar">
-        <div class="top-logo">Eggxams</div>
+        <div class="top-logo">Exam<span>App</span></div>
         <div class="top-center-title">Advanced React Development - Final Assessment</div>
         <div class="top-controls">
-            <span class="timer-box">
-                <i class="far fa-clock"></i> 00:29:56
-            </span>
-            <span class="status-box connected">
-                <i class="fas fa-wifi"></i> Connected
-            </span>
-            <span class="status-box secure-mode">
-                <i class="fas fa-lock"></i> Secure Mode
-            </span>
+            <div class="timer-box">00:57:11</div>
+            <div class="status-box connected"><i class="fas fa-check-circle"></i> Connected</div>
+            <div class="status-box secure-mode"><i class="fas fa-lock"></i> Secure Mode</div>
         </div>
     </div>
 
+    <!-- 1. Main Interface Layout -->
     <div class="main-interface">
-        
+
+        <!-- 1.1 Left Sidebar -->
         <div class="sidebar">
+            
+            <!-- User Profile -->
             <div class="user-profile">
                 <div class="avatar-placeholder">KG</div>
-                <div class="user-info-text">
+                <div class="user-info">
                     <div class="user-name">Karen Green</div>
                     <div class="user-details">STD ID: 3525-4521</div>
                 </div>
                 <i class="fas fa-chevron-left sidebar-toggle"></i>
             </div>
             
-            <hr class="sidebar-divider">
+            <div class="sidebar-divider"></div>
 
-            <div class="menu-item active">
-                <i class="fas fa-question-circle"></i> Questions
-            </div>
-            <div class="menu-item">
-                <i class="fas fa-info-circle"></i> Instructions
-            </div>
-            <div class="menu-item">
-                <i class="fas fa-headset"></i> Support
+            <!-- Navigation Menu -->
+            <div class="menu-list">
+                <div class="menu-item active">
+                    <i class="fas fa-question-circle"></i> Questions
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-info-circle"></i> Instructions
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-headset"></i> Support
+                </div>
             </div>
 
-            <hr class="sidebar-divider">
+            <div class="sidebar-divider"></div>
 
+            <!-- Question Navigator -->
             <div class="nav-section">
                 <div class="nav-header">Question Navigator</div>
                 <div class="nav-subtext">Click to jump to any question</div>
+                
                 <div class="question-grid">
-                    <div class="q-box current">1</div>
-                    <div class="q-box unanswered">2</div>
-                    <div class="q-box unanswered">3</div>
-                    <div class="q-box unanswered">4</div>
-                    <div class="q-box unanswered">5</div>
-                    <div class="q-box unanswered">6</div>
-                    <div class="q-box unanswered">7</div>
-                    <div class="q-box unanswered">8</div>
-                    <div class="q-box unanswered">9</div>
-                    <div class="q-box unanswered">10</div>
-                    <div class="q-box unanswered">11</div>
-                    <div class="q-box unanswered">12</div>
-                    <div class="q-box unanswered">13</div>
-                    <div class="q-box unanswered">14</div>
-                    <div class="q-box unanswered">15</div>
-                    <div class="q-box unanswered">16</div>
-                    <div class="q-box unanswered">17</div>
-                    <div class="q-box unanswered">18</div>
-                    <div class="q-box unanswered">19</div>
-                    <div class="q-box unanswered">20</div>
-                    <div class="q-box unanswered">21</div>
-                    <div class="q-box unanswered">22</div>
-                    <div class="q-box unanswered">23</div>
-                    <div class="q-box unanswered">24</div>
-                    <div class="q-box unanswered">25</div>
-                    <div class="q-box unanswered">26</div>
-                    <div class="q-box unanswered">27</div>
-                    <div class="q-box unanswered">28</div>
-                    <div class="q-box unanswered">29</div>
-                    <div class="q-box unanswered">30</div>
-                    <div class="q-box unanswered">31</div>
-                    <div class="q-box unanswered">32</div>
-                    <div class="q-box unanswered">33</div>
-                    <div class="q-box unanswered">34</div>
-                    <div class="q-box unanswered">35</div>
-                    <div class="q-box unanswered">36</div>
-                    <div class="q-box unanswered">37</div>
-                    <div class="q-box unanswered">38</div>
-                    <div class="q-box unanswered">39</div>
-                    <div class="q-box unanswered">40</div>
-                    <div class="q-box unanswered">41</div>
-                    <div class="q-box unanswered">42</div>
-                    <div class="q-box unanswered">43</div>
-                    <div class="q-box unanswered">44</div>
-                    <div class="q-box unanswered">45</div>
-                    <div class="q-box unanswered">46</div>
-                    <div class="q-box unanswered">47</div>
-                    <div class="q-box unanswered">48</div>
-                    <div class="q-box unanswered">49</div>
-                    <div class="q-box unanswered">50</div>
+                    <!-- 50 questions, 5 per row -->
+                    <div class="q-box current" data-q="1">1</div>
+                    <div class="q-box answered" data-q="2">2</div>
+                    <div class="q-box review" data-q="3">3</div>
+                    <div class="q-box" data-q="4">4</div>
+                    <div class="q-box" data-q="5">5</div>
+
+                    <div class="q-box" data-q="6">6</div>
+                    <div class="q-box" data-q="7">7</div>
+                    <div class="q-box" data-q="8">8</div>
+                    <div class="q-box" data-q="9">9</div>
+                    <div class="q-box" data-q="10">10</div>
+
+                    <div class="q-box" data-q="11">11</div>
+                    <div class="q-box" data-q="12">12</div>
+                    <div class="q-box" data-q="13">13</div>
+                    <div class="q-box" data-q="14">14</div>
+                    <div class="q-box" data-q="15">15</div>
+
+                    <div class="q-box" data-q="16">16</div>
+                    <div class="q-box" data-q="17">17</div>
+                    <div class="q-box" data-q="18">18</div>
+                    <div class="q-box" data-q="19">19</div>
+                    <div class="q-box" data-q="20">20</div>
+
+                    <div class="q-box" data-q="21">21</div>
+                    <div class="q-box" data-q="22">22</div>
+                    <div class="q-box" data-q="23">23</div>
+                    <div class="q-box" data-q="24">24</div>
+                    <div class="q-box" data-q="25">25</div>
+                    
+                    <div class="q-box" data-q="26">26</div>
+                    <div class="q-box" data-q="27">27</div>
+                    <div class="q-box" data-q="28">28</div>
+                    <div class="q-box" data-q="29">29</div>
+                    <div class="q-box" data-q="30">30</div>
+
+                    <div class="q-box" data-q="31">31</div>
+                    <div class="q-box" data-q="32">32</div>
+                    <div class="q-box" data-q="33">33</div>
+                    <div class="q-box" data-q="34">34</div>
+                    <div class="q-box" data-q="35">35</div>
+
+                    <div class="q-box" data-q="36">36</div>
+                    <div class="q-box" data-q="37">37</div>
+                    <div class="q-box" data-q="38">38</div>
+                    <div class="q-box" data-q="39">39</div>
+                    <div class="q-box" data-q="40">40</div>
+
+                    <div class="q-box" data-q="41">41</div>
+                    <div class="q-box" data-q="42">42</div>
+                    <div class="q-box" data-q="43">43</div>
+                    <div class="q-box" data-q="44">44</div>
+                    <div class="q-box" data-q="45">45</div>
+
+                    <div class="q-box" data-q="46">46</div>
+                    <div class="q-box" data-q="47">47</div>
+                    <div class="q-box" data-q="48">48</div>
+                    <div class="q-box" data-q="49">49</div>
+                    <div class="q-box" data-q="50">50</div>
                 </div>
             </div>
-            
+
+            <!-- Legend -->
             <div class="legend">
                 <div class="legend-item"><span class="legend-color answered-color"></span> Answered</div>
                 <div class="legend-item"><span class="legend-color unanswered-color"></span> Unanswered</div>
@@ -115,140 +132,160 @@
             </div>
         </div>
 
+        <!-- 1.2 Main Content Area -->
         <div class="main-content">
             <div class="question-container">
+                <!-- Question Header -->
                 <div class="question-header">
-                    <span class="q-number">Question 1 of 50</span>
-                    
-                    <span class="q-marks-badge">2 Marks</span>
-                    
-                    <span class="q-type-badge">Multiple Choice</span>
-                    
-                    <button class="mark-review-btn">
-                        <i class="far fa-bookmark"></i> Mark for Review
-                    </button>
+                    <div class="q-number">Question 1 of 50</div>
+                    <div class="q-marks-badge">2 Marks</div>
+                    <div class="q-type-badge">Multiple Choice</div>
+                    <button class="mark-review-btn"><i class="fas fa-flag"></i> Mark for Review</button>
                 </div>
-                
-                <hr class="content-divider">
 
-                <p class="question-text">
+                <!-- Question Text -->
+                <div class="question-text">
                     What is the primary purpose of the React Virtual DOM?
-                </p>
-
-                <div class="answer-options">
-                    <p class="answer-label">Your Answer</p>
-                    <div class="option">To directly manipulate the browser DOM</div>
-                    <div class="option">To optimize rendering performance by minimizing direct DOM updates</div>
-                    <div class="option">To store application state</div>
-                    <div class="option">To handle routing in React applications</div>
                 </div>
 
+                <!-- Answer Options -->
+                <div class="answer-label">Your Answer</div>
+                
+                <div class="option" onclick="selectOption(this)">
+                    To directly manipulate the browser DOM
+                </div>
+                <div class="option selected" onclick="selectOption(this)">
+                    To optimize rendering performance by minimizing direct DOM updates
+                </div>
+                <div class="option" onclick="selectOption(this)">
+                    To store application state
+                </div>
+                <div class="option" onclick="selectOption(this)">
+                    To handle routing in React applications
+                </div>
+
+                <!-- Action Buttons -->
                 <div class="action-buttons">
-                    <button class="save-btn"><i class="fas fa-check"></i> Save Answer</button>
+                    <button class="save-btn"><i class="fas fa-save"></i> Save Answer</button>
                     <button class="clear-btn">Clear</button>
                 </div>
             </div>
         </div>
 
-        <div class="status-panel-wrapper"> 
+        <!-- 1.3 Right Status Panel -->
+        <div class="status-panel-wrapper">
             
+            <!-- Exam Progress Card -->
             <div class="exam-progress-card">
                 <div class="panel-header">Exam Progress</div>
                 
                 <div class="progress-info">
-                    Questions Answered
+                    <span>Questions Answered</span>
                     <span class="progress-count">0 / 50</span>
                 </div>
-                
                 <div class="progress-bar-container">
                     <div class="progress-bar" style="width: 0%;"></div>
                 </div>
-                
                 <div class="progress-percentage">0% Complete</div>
 
+                <!-- Stat Cards Row -->
                 <div class="stat-cards-row">
                     <div class="stat-card">
-                        <i class="far fa-check-circle stat-icon answered-icon"></i> 
-                        <div class="stat-content">
-                            <span class="stat-value">0</span>
-                            <span class="stat-label">Answered</span>
+                        <div class="stat-icon answered-icon"><i class="fas fa-check"></i></div>
+                        <div>
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Answered</div>
                         </div>
                     </div>
-
                     <div class="stat-card">
-                        <i class="far fa-clock stat-icon remaining-icon"></i> 
-                        <div class="stat-content">
-                            <span class="stat-value">50</span>
-                            <span class="stat-label">Remaining</span>
+                        <div class="stat-icon remaining-icon"><i class="fas fa-clock"></i></div>
+                        <div>
+                            <div class="stat-value">50</div>
+                            <div class="stat-label">Remaining</div>
                         </div>
                     </div>
                 </div>
-            </div> <div class="status-blocks">
-                
-                <div class="status-block review-block">
-                    <div class="block-icon">
-                        <i class="fas fa-bookmark"></i>
-                    </div>
-                    <div class="block-text">
-                        <span class="block-title">Marked for Review</span>
-                        <span class="block-value">0 questions</span>
-                    </div>
-                </div>
-                
-                <div class="status-block connection-block">
-                    <div class="block-icon">
-                        <i class="fas fa-wifi"></i>
-                    </div>
-                    <div class="block-text">
-                        <span class="block-title">Connection</span>
-                        <span class="block-value connected-value">Connected</span>
-                    </div>
-                </div>
-                
-                <div class="status-block autosave-block">
-                    <div class="block-icon">
-                        <i class="fas fa-save"></i>
-                    </div>
-                    <div class="block-text">
-                        <span class="block-title">Auto-save</span>
-                        <span class="block-value autosave-value">Last saved Not saved yet</span>
-                    </div>
-                </div>
-            </div> <div class="exam-details-card">
-                <div class="panel-header">Exam Details</div>
-                
-                <div class="detail-row">
-                    <span>Total Questions</span>
-                    <span class="detail-value">50</span>
-                </div>
-                <div class="detail-row">
-                    <span>Total Marks</span>
-                    <span class="detail-value">100</span>
-                </div>
-                <div class="detail-row">
-                    <span>Duration</span>
-                    <span class="detail-value">120 minutes</span>
-                </div>
-            </div> </div> </div>
+            </div>
 
-    <div class="bottom-action-bar">
-        <div class="bottom-left-pager">
-            <button class="pager-btn disabled">
-                <i class="fas fa-chevron-left"></i> Previous
-            </button>
-            <div class="q-of-total">Question 1 of 50</div>
-            <button class="pager-btn">
-                Next <i class="fas fa-chevron-right"></i>
-            </button>
+            <!-- Stack of Status Blocks -->
+            <div class="status-blocks">
+                <!-- Marked for Review -->
+                <div class="status-block review-block">
+                    <div class="block-icon"><i class="fas fa-flag"></i></div>
+                    <div class="block-text">
+                        <div class="block-title">Marked for Review</div>
+                        <div class="block-value">0 questions</div>
+                    </div>
+                </div>
+
+                <!-- Connection Status -->
+                <div class="status-block connection-block">
+                    <div class="block-icon"><i class="fas fa-wifi"></i></div>
+                    <div class="block-text">
+                        <div class="block-title">Connection</div>
+                        <div class="block-value">Connected</div>
+                    </div>
+                </div>
+
+                <!-- Auto-Save Status -->
+                <div class="status-block autosave-block">
+                    <div class="block-icon"><i class="fas fa-save"></i></div>
+                    <div class="block-text">
+                        <div class="block-title">Auto-save</div>
+                        <div class="block-value">Last saved Not saved yet</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exam Details Card -->
+            <div class="exam-details-card">
+                <div class="panel-header">Exam Details</div>
+                <div class="detail-row">
+                    <div class="detail-label">Total Questions</div>
+                    <div class="detail-value">50</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Total Marks</div>
+                    <div class="detail-value">100</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Duration</div>
+                    <div class="detail-value">120 minutes</div>
+                </div>
+            </div>
+
         </div>
-        <div class="bottom-center-status">
-            <span class="status-item connected"><i class="fas fa-wifi"></i> Connected</span>
-            <span class="status-item chat"><i class="fas fa-comment-dots"></i> Chat with Proctor</span>
-        </div>
-        <button class="submit-btn">
-            <i class="fas fa-paper-plane"></i> Submit Exam
-        </button>
     </div>
 
+    <!-- 2. Bottom Action Bar -->
+    <div class="bottom-action-bar">
+        <div class="bottom-left-pager">
+            <!-- Pager Buttons: Styled as clean buttons -->
+            <button class="pager-btn disabled"><i class="fas fa-chevron-left"></i> Previous</button>
+            <!-- Question Status: Styled as a non-interactive block -->
+            <div class="q-of-total">Question 1 of 50</div>
+            <button class="pager-btn">Next <i class="fas fa-chevron-right"></i></button>
+        </div>
+        
+        <div class="bottom-center-status">
+            <!-- Note: Replaced fas fa-circle-notch with fas fa-wifi for connectivity consistency -->
+            <div class="status-item connected"><i class="fas fa-wifi"></i> Connected</div>
+            <div class="status-item"><i class="fas fa-comments"></i> Chat with Proctor</div>
+        </div>
+
+        <!-- Submit Button: Styled as a vibrant, solid blue button -->
+        <button class="submit-btn"><i class="fas fa-paper-plane"></i> Submit Exam</button>
+    </div>
+
+    <script>
+        // Simple script to handle option selection and demonstrate interactivity
+        function selectOption(selectedOption) {
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                option.classList.remove('selected');
+            });
+            selectedOption.classList.add('selected');
+        }
+    </script>
 </body>
 </html>
